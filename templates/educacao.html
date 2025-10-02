@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Educação - EcoMap{% endblock %}
+
+{% block content %}
+<section class="educacao container">
+    <h1>Educação Ambiental: Como separar e descartar resíduos corretamente</h1>
+
+    <div class="accordion">
+
+        <!-- Como separar corretamente -->
+        <div class="accordion-item">
+            <div class="accordion-header" tabindex="0" role="button" aria-expanded="false" aria-controls="separar" id="header-separar">
+                Como separar corretamente os resíduos?
+            </div>
+            <div class="accordion-content" id="separar" role="region" aria-labelledby="header-separar">
+                <p>A separação adequada dos resíduos é essencial para a reciclagem eficiente e a preservação do meio ambiente. A Política Nacional de Resíduos Sólidos (Lei nº 12.305/2010) estabelece diretrizes para a gestão adequada dos resíduos. Materiais como papel e papelão devem estar limpos, secos e sem fitas ou plásticos. Plásticos, incluindo garrafas PET e embalagens de alimentos, precisam ser esvaziados e lavados antes do descarte. Vidros devem ser descartados sem tampas e restos de produto, e vidros quebrados precisam ser embrulhados em jornal para evitar acidentes. Metais, como latas de alumínio e aço, devem ser amassados e livres de resíduos grandes. Por outro lado, alguns materiais não são recicláveis, incluindo papel carbono, fotografias, papéis engordurados, copos descartáveis, eletrônicos e baterias, que jamais devem ir para o lixo comum, devendo ser levados a pontos de coleta específicos.</p>
+            </div>
+        </div>
+
+        <!-- Materiais perigosos -->
+        <div class="accordion-item">
+            <div class="accordion-header" tabindex="0" role="button" aria-expanded="false" aria-controls="perigosos" id="header-perigosos">
+                Materiais perigosos
+            </div>
+            <div class="accordion-content" id="perigosos" role="region" aria-labelledby="header-perigosos">
+                <p>Resíduos como pilhas, baterias, lâmpadas fluorescentes, tintas, solventes e medicamentos contêm substâncias tóxicas que podem causar danos à saúde humana e ao meio ambiente. Pilhas e baterias devem ser entregues em pontos de coleta especializados, respeitando limites de metais pesados como chumbo, cádmio e mercúrio. Lâmpadas fluorescentes contêm mercúrio e exigem destinação adequada. Tintas e solventes devem ser armazenados corretamente e levados a pontos de coleta específicos. Medicamentos nunca devem ser descartados no lixo comum, devendo ser encaminhados a pontos de coleta autorizados para tratamento seguro.</p>
+            </div>
+        </div>
+
+        <!-- Pontos de coleta -->
+        <div class="accordion-item">
+            <div class="accordion-header" tabindex="0" role="button" aria-expanded="false" aria-controls="coleta" id="header-coleta">
+                Como encontrar pontos de coleta?
+            </div>
+            <div class="accordion-content" id="coleta" role="region" aria-labelledby="header-coleta">
+                <p>Para descartar corretamente os resíduos, é fundamental conhecer os pontos de coleta disponíveis na sua região. Plataformas como o Recicla Sampa permitem localizar pontos de coleta próximos, enquanto o eCycle fornece informações detalhadas sobre coleta seletiva e separação de resíduos. O Google Maps também oferece funcionalidades para indicar pontos de coleta de recicláveis, facilitando a vida do cidadão e contribuindo para a preservação ambiental.</p>
+            </div>
+        </div>
+
+        <!-- Cores da coleta seletiva -->
+        <div class="accordion-item">
+            <div class="accordion-header" tabindex="0" role="button" aria-expanded="false" aria-controls="cores" id="header-cores">
+                Cores da coleta seletiva
+            </div>
+            <div class="accordion-content" id="cores" role="region" aria-labelledby="header-cores">
+                <p>As cores da coleta seletiva ajudam a identificar rapidamente o tipo de resíduo a ser descartado. Segundo o CONAMA 275/2001, o azul indica papel e papelão, o verde identifica vidro, o vermelho é usado para plásticos, o amarelo para metais e o marrom para resíduos orgânicos. Essa padronização facilita a separação correta e aumenta a eficiência da reciclagem.</p>
+            </div>
+        </div>
+
+        <!-- Dicas práticas -->
+        <div class="accordion-item">
+            <div class="accordion-header" tabindex="0" role="button" aria-expanded="false" aria-controls="dicas" id="header-dicas">
+                Dicas práticas para o dia a dia
+            </div>
+            <div class="accordion-content" id="dicas" role="region" aria-labelledby="header-dicas">
+                <p>Algumas práticas simples ajudam a manter o descarte correto e eficiente. Lave os materiais antes de descartá-los para evitar odores e contaminação cruzada. Utilize lixeiras coloridas para separar os resíduos por tipo. Informe-se sobre os pontos de coleta disponíveis e participe de programas de coleta seletiva em sua comunidade. Sempre que possível, reduza a geração de resíduos, optando por produtos com menos embalagens e maior durabilidade, contribuindo para a preservação do meio ambiente e a sustentabilidade.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+// Accordion interativo
+document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+        const expanded = header.getAttribute('aria-expanded') === 'true';
+        header.setAttribute('aria-expanded', !expanded);
+        const content = document.getElementById(header.getAttribute('aria-controls'));
+        content.style.display = expanded ? 'none' : 'block';
+        header.classList.toggle('active');
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}Formulário - EcoMap{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="card shadow-sm mx-auto" style="max-width: 700px;">
+        <div class="card-body">
+            <h3 class="card-title mb-4 text-center">{{ 'Editar Ponto' if form.id else 'Cadastrar Ponto' }}</h3>
+            <form method="POST" novalidate>
+                <!-- Nome -->
+                <div class="mb-3">
+                    <label for="nome" class="form-label fw-semibold">Nome do Ponto</label>
+                    <input type="text" name="nome" id="nome" class="form-control" value="{{ form.nome or '' }}" required>
+                </div>
+
+                <!-- Endereço -->
+                <div class="row g-3 mb-3">
+                    <div class="col-md-4">
+                        <label for="cep" class="form-label fw-semibold">CEP</label>
+                        <input type="text" name="cep" id="cep" class="form-control" value="{{ form.cep or '' }}" placeholder="00000-000">
+                    </div>
+                    <div class="col-md-8">
+                        <label for="rua" class="form-label fw-semibold">Rua</label>
+                        <input type="text" name="rua" id="rua" class="form-control" value="{{ form.rua or '' }}">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="numero" class="form-label fw-semibold">Número</label>
+                        <input type="text" name="numero" id="numero" class="form-control" value="{{ form.numero or '' }}">
+                    </div>
+                    <div class="col-md-8">
+                        <label for="complemento" class="form-label fw-semibold">Complemento</label>
+                        <input type="text" name="complemento" id="complemento" class="form-control" value="{{ form.complemento or '' }}">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="bairro" class="form-label fw-semibold">Bairro</label>
+                        <input type="text" name="bairro" id="bairro" class="form-control" value="{{ form.bairro or '' }}">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="cidade" class="form-label fw-semibold">Cidade</label>
+                        <input type="text" name="cidade" id="cidade" class="form-control" value="{{ form.cidade or '' }}">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="estado" class="form-label fw-semibold">Estado</label>
+                        <input type="text" name="estado" id="estado" class="form-control" value="{{ form.estado or '' }}">
+                    </div>
+                </div>
+
+                <!-- Horários -->
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label for="horarios_inicio" class="form-label fw-semibold">Horário Início</label>
+                        <input type="time" name="horarios_inicio" id="horarios_inicio" class="form-control" value="{{ form.horarios_inicio or '' }}">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="horarios_fim" class="form-label fw-semibold">Horário Fim</label>
+                        <input type="time" name="horarios_fim" id="horarios_fim" class="form-control" value="{{ form.horarios_fim or '' }}">
+                    </div>
+                </div>
+
+                <!-- Materiais Aceitos (tags input) -->
+                <div class="mb-3">
+                    <label for="materiais_tags" class="form-label fw-semibold">Materiais Aceitos</label>
+                    <input type="text" name="materiais_tags" id="materiais_tags" class="form-control" placeholder="Digite e pressione Enter para adicionar" 
+                    value="{{ form.materiais_custom or '' }}">
+                    <small class="text-muted">Separe os materiais usando vírgula ou pressione Enter após cada item.</small>
+                </div>
+
+                <!-- Botão -->
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-success px-5 py-2 fw-bold">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- JS para transformar input em tags (opcional) -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('materiais_tags');
+    if (!input) return;
+
+    input.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ',') {
+            e.preventDefault();
+            let val = input.value.trim();
+            if (val && !val.endsWith(',')) val += ',';
+            input.value = val;
+        }
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Pontos de Coleta - EcoMap{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pontos.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4 text-center">Pontos de Coleta</h1>
+
+    <!-- Lista de Pontos -->
+    <ul class="lista-pontos">
+        {% if pontos %}
+            {% for ponto in pontos %}
+            <li class="ponto-item">
+                <div class="ponto-info">
+                    <strong>{{ ponto.nome }}</strong><br>
+                    {{ ponto.rua }}, {{ ponto.numero }}{% if ponto.complemento %} - {{ ponto.complemento }}{% endif %} |
+                    {{ ponto.bairro }} - {{ ponto.cidade }}/{{ ponto.estado }} |
+                    CEP: {{ ponto.cep }} |
+                    Horário: {{ ponto.horarios_inicio }} — {{ ponto.horarios_fim }}
+                </div>
+                
+                <div class="ponto-actions">
+                    <!-- Botão Excluir -->
+                    <form action="{{ url_for('delete_ponto', id=ponto.id) }}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir este ponto?');">
+                        <button type="submit" class="btn-excluir">Excluir</button>
+                    </form>
+                    <!-- Botão Editar (opcional) -->
+                    <form action="{{ url_for('editar_ponto', id=ponto.id) }}" method="get">
+                        <button type="submit" class="btn-editar">Editar</button>
+                    </form>
+                </div>
+            </li>
+            {% endfor %}
+        {% else %}
+            <p class="text-center">Nenhum ponto cadastrado ainda.</p>
+        {% endif %}
+    </ul>
+</div>
+{% endblock %}

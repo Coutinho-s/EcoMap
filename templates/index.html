@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Início - EcoMap{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero py-5 text-center shadow-sm bg-success text-white">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-3">Bem-vinda ao EcoMap!</h1>
+        <p class="lead mb-4">Encontre pontos de coleta de resíduos e contribua para um mundo mais sustentável.</p>
+        <a href="{{ url_for('pontos') }}" class="btn btn-light btn-lg shadow-sm">Ver Pontos de Coleta</a>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features py-5 bg-light">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature p-4 text-center h-100 shadow-sm rounded">
+                    <h3 class="mb-3">Separação de Resíduos</h3>
+                    <p>Separe papel, plástico, vidro e metal. Facilita a reciclagem e reduz a poluição.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature p-4 text-center h-100 shadow-sm rounded">
+                    <h3 class="mb-3">Reduza Descartáveis</h3>
+                    <p>Prefira produtos reutilizáveis e diminua o uso de plásticos descartáveis.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature p-4 text-center h-100 shadow-sm rounded">
+                    <h3 class="mb-3">Participe da Comunidade</h3>
+                    <p>Mutirões de limpeza e educação ambiental ajudam a conscientizar mais pessoas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<!-- Nenhum script necessário sem mapa -->
+{% endblock %}
